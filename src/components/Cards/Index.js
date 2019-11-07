@@ -5,7 +5,11 @@ const Card = props => {
   return (
     <div className="card">
       <div className="img-container">
-        <img alt="X-Men" src={props.image} />
+        <img
+          alt="X-Men"
+          src={props.image}
+          onClick={() => props.handleClick(props.id)}
+        />
       </div>
     </div>
   );
