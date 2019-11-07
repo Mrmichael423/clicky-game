@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Wrapper from "./components/Wrapper/Index";
+import Card from "./components/Cards/Index";
+import xmen from "./xmen.json";
+import Score from "./components/Nav/Index";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    xmen: xmen,
+    score: 0,
+    highscore: 12,
+    clicked: []
+  };
+
+  render() {
+    return (
+      <>
+        <Score score={this.state.Score} highscore={this.state.highscore} />
+        <Wrapper>
+          {this.state.xmen.map(xmen => (
+            <Card id={xmen.id} key={xmen.id} image={xmen.image} />
+          ))}
+        </Wrapper>
+      </>
+    );
+  }
 }
 
 export default App;
